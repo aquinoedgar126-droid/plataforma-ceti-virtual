@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CETI Virtual - Plataforma</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+
+      <img src="img/CETI_Logo.png"
+           alt="Logo CETI"
+           width="95"
+           height="70"
+           class="me-3 rounded">
+    <div>
+      <span class="navbar-brand d-block mb-0">CETI Virtual</span>
+      <small class="text-white fw-semibold" id="usuarioActivo"></small>
+    </div>
+
+    </a>
+
+    <button class="btn btn-light fw-semibold" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+</nav>
+
+  <div class="container-fluid py-4 panel-fondo" id="contenido">
+    <h2 class="titulo-bienvenida mb-3" id="mensajeBienvenida"></h2>
+    <p class="fw-semibold text-primary">Sesión activa del estudiante: <span id="usuarioPanel"></span></p>
+
+    <div class="panel-principal">
+
+    <!-- LATERAL IZQUIERDO -->
+    <div class="panel-lateral">
+
+        <div class="bienvenida-lateral">
+            <span id="saludoLateral"></span><br>
+            <span id="nombreAlumno"></span>
+            
+        </div>
+
+    </div>
+
+    <!-- PANEL CENTRAL -->
+<div class="panel-centro">
+
+    <!-- FLECHA IZQUIERDA -->
+    <button class="flecha flecha-izq">
+
+        &#10094;
+
+    </button>
+
+    <!-- CONTENEDOR MODULOS -->
+    <div class="contenedor-modulos">
+
+        <div class="slider">
+
+            <!-- HORARIOS -->
+            <div class="modulo-grande">
+
+                <img src="img/thumb_horarios_trabalho_800x450 (1).png"
+                     class="img-modulo">
+
+                <div class="contenido-modulo">
+
+                    <h2>Horarios</h2>
+
+                    <p>Consulta tus materias</p>
+
+                    <button class="btn btn-modulo"
+                            onclick="verHorarios()">
+
+                        Abrir
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- PAGOS -->
+            <div class="modulo-grande">
+
+                <img src="img/mejores-formas-pago.png"
+                     class="img-modulo">
+
+                <div class="contenido-modulo">
+
+                    <h2>Pagos</h2>
+
+                    <p>Consulta tus adeudos</p>
+
+                    <button class="btn btn-modulo"
+                            onclick="verPagos()">
+
+                        Abrir
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- AVISOS -->
+            <div class="modulo-grande">
+
+                <img src="img/BannerAviso2526.png"
+                     class="img-modulo">
+
+                <div class="contenido-modulo">
+
+                    <h2>Avisos</h2>
+
+                    <p>Información institucional</p>
+
+                    <button class="btn btn-modulo"
+                            onclick="verAvisos()">
+
+                        Abrir
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- FAQ -->
+            <div class="modulo-grande">
+
+                <img src="img/faq.png"
+                     class="img-modulo">
+
+                <div class="contenido-modulo">
+
+                    <h2>FAQ</h2>
+
+                    <p>Preguntas frecuentes</p>
+
+                    <button class="btn btn-modulo"
+                            onclick="verFAQ()">
+
+                        Abrir
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- CONTACTO -->
+            <div class="modulo-grande">
+
+                <img src="img/contacto.png"
+                     class="img-modulo">
+
+                <div class="contenido-modulo">
+
+                    <h2>Contacto</h2>
+
+                    <p>Envía tus consultas</p>
+
+                    <button class="btn btn-modulo"
+                            onclick="verContacto()">
+
+                        Abrir
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FLECHA DERECHA -->
+    <button class="flecha flecha-der">
+
+        &#10095;
+
+    </button>
+
+</div>
+
+
+
+    <!-- LATERAL DERECHO -->
+    <div class="panel-lateral">
+
+        <img src="img/CETI_Logo.png"
+             class="logo-lateral">
+
+        <p id="fraseMotivacional"
+           class="frase-lateral">
+
+           La educación transforma vidas
+
+        </p>
+
+    </div>
+
+</div>
+  </div>
+
+  <script>
+   const datosAcademicosBase = {
+  "50001": {
+    horarios: [
+ {
+  dia: "Lunes",
+  materia: "Diseño de Backend",
+  hora: "17:30 - 18:20",
+  parcial1: { calificacion: 85, entregadas: 8, total: 10 },
+  parcial2: { calificacion: 90, entregadas: 9, total: 10 },
+  parcial3: { calificacion: 88, entregadas: 8, total: 9 },
+  asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+ },
+ {
+  dia: "Lunes",
+  materia: "Estadía Profesional",
+  hora: "18:20 - 20:00",
+  parcial1: { calificacion: 90, entregadas: 9, total: 10 },
+  parcial2: { calificacion: 90, entregadas: 9, total: 10 },
+  parcial3: { calificacion: 88, entregadas: 8, total: 9 },
+  asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+ },
+{
+  dia: "Lunes",
+  materia: "Redes LAN y WAN",
+  hora: "20:00 - 21:45",
+  parcial1: { calificacion: 90, entregadas: 9, total: 10 },
+  parcial2: { calificacion: 90, entregadas: 9, total: 10 },
+  parcial3: { calificacion: 88, entregadas: 8, total: 9 },
+  asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+ },
+{
+  dia: "Martes",
+  materia: "Tecnologías Emergentes",
+  hora: "15:00 - 16:40",
+  parcial1: { calificacion: 70, entregadas: 7, total: 10 },
+  parcial2: { calificacion: 80, entregadas: 8, total: 10 },
+  parcial3: { calificacion: 85, entregadas: 8.5, total: 10 },
+  asistencia: { asistidas: 30, totalClases: 30, porcentaje: 100 }
+},
+{
+  dia: "Martes",
+  materia: "Implementación de Proyecto",
+  hora: "16:40 - 18:20",
+  parcial1: { calificacion: 95, entregadas: 9.5, total: 10 },
+  parcial2: { calificacion: 95, entregadas: 9.5, total: 10 },
+  parcial3: { calificacion: 95, entregadas: 9.5, total: 10 },
+  asistencia: { asistidas: 30, totalClases: 30, porcentaje: 100 }
+},
+{
+  dia: "Martes",
+  materia: "Aplicaciones Móviles y en la Nube",
+  hora: "18:20 - 20:00",
+  parcial1: { calificacion: 95, entregadas: 9.5, total: 10 },
+  parcial2: { calificacion: 95, entregadas: 9.5, total: 10 },
+  parcial3: { calificacion: 95, entregadas: 9.5, total: 10 },
+  asistencia: { asistidas: 30, totalClases: 30, porcentaje: 100 }
+},
+{
+  dia: "Martes",
+  materia: "Sistemas Expertos",
+  hora: "20:00 - 21:45",
+  parcial1: { calificacion: 100, entregadas: 10, total: 10 },
+  parcial2: { calificacion: 100, entregadas: 10, total: 10 },
+  parcial3: { calificacion: 100, entregadas: 10, total: 10 },
+  asistencia: { asistidas: 30, totalClases: 30, porcentaje: 100 }
+},
+
+ ],
+    pagos: [
+      { concepto: "Aportación de semestre", estatus: "Pendiente", fecha: "10/03/2026" },
+      { concepto: "Credencial", estatus: "Pagado", fecha: "10/02/2026" },
+      { concepto: "Intersemestrales", estatus: "Pendiente", fecha: "15/03/2026" }
+    ]
+  },
+
+  "50002": {
+    horarios: [
+      {
+      dia: "Lunes",
+      materia: "Virtualización",
+      hora: "15:00 - 15:50",
+      parcial1: { calificacion: 70, entregadas: 7, total: 10 },
+      parcial2: { calificacion: 82, entregadas: 8, total: 10 },
+      parcial3: { calificacion: 80, entregadas: 8, total: 10 },
+      asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+    },
+    {
+      dia: "Lunes",
+      materia: "Proyecto Metodológico",
+      hora: "17:30 - 19:10",
+      parcial1: { calificacion: 70, entregadas: 7, total: 10 },
+      parcial2: { calificacion: 82, entregadas: 8, total: 10 },
+      parcial3: { calificacion: 80, entregadas: 8, total: 10 },
+      asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+    },
+    {
+      dia: "Lunes",
+      materia: "Progrmación Móvil",
+      hora: "19:10 - 20:00",
+      parcial1: { calificacion: 70, entregadas: 7, total: 10 },
+      parcial2: { calificacion: 82, entregadas: 8, total: 10 },
+      parcial3: { calificacion: 80, entregadas: 8, total: 10 },
+      asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+    },
+    {
+      dia: "Martes",
+      materia: "Aseguramiento de la calidad del Software",
+      hora: "15:00 - 16:40",
+      parcial1: { calificacion: 100, entregadas: 10, total: 10 },
+      parcial2: { calificacion: 90, entregadas: 9, total: 10 },
+      parcial3: { calificacion: 90, entregadas: 9, total: 10 },
+      asistencia: { asistidas: 29, totalClases: 30, porcentaje: 99 }
+    },
+    {
+      dia: "Martes",
+      materia: "Progrmación Web",
+      hora: "16:40 - 17:30",
+      parcial1: { calificacion: 100, entregadas: 10, total: 10 },
+      parcial2: { calificacion: 90, entregadas: 9, total: 10 },
+      parcial3: { calificacion: 90, entregadas: 9, total: 10 },
+      asistencia: { asistidas: 29, totalClases: 30, porcentaje: 99 }
+    },
+    {
+      dia: "Martes",
+      materia: "Virtualización",
+      hora: "18:20 - 20:00",
+      parcial1: { calificacion: 70, entregadas: 7, total: 10 },
+      parcial2: { calificacion: 82, entregadas: 8, total: 10 },
+      parcial3: { calificacion: 80, entregadas: 8, total: 10 },
+      asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+    },
+    {
+      dia: "Martes",
+      materia: "Planeación Estratégica y Habilidades Directivas",
+      hora: "20:00 - 20:50",
+      parcial1: { calificacion: 70, entregadas: 7, total: 10 },
+      parcial2: { calificacion: 82, entregadas: 8, total: 10 },
+      parcial3: { calificacion: 80, entregadas: 8, total: 10 },
+      asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+    },
+    {
+      dia: "Miércoles",
+      materia: "Aseguramiento de la calidad del Software",
+      hora: "15:50 - 16:40",
+      parcial1: { calificacion: 100, entregadas: 10, total: 10 },
+      parcial2: { calificacion: 90, entregadas: 9, total: 10 },
+      parcial3: { calificacion: 90, entregadas: 9, total: 10 },
+      asistencia: { asistidas: 29, totalClases: 30, porcentaje: 99 }
+    },
+    {
+      dia: "Miércoles",
+      materia: "Gestión de infraestructura informática",
+      hora: "16:40 - 19:10",
+      parcial1: { calificacion: 100, entregadas: 10, total: 10 },
+      parcial2: { calificacion: 100, entregadas: 10, total: 10 },
+      parcial3: { calificacion: 100, entregadas: 10, total: 10 },
+      asistencia: { asistidas: 30, totalClases: 30, porcentaje: 100 }
+    },
+    {
+      dia: "Miércoles",
+      materia: "Planeación Estratégica y Habilidades Directivas",
+      hora: "15:50 - 16:40",
+      parcial1: { calificacion: 70, entregadas: 7, total: 10 },
+      parcial2: { calificacion: 82, entregadas: 8, total: 10 },
+      parcial3: { calificacion: 80, entregadas: 8, total: 10 },
+      asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+    },
+    {
+      dia: "Jueves",
+      materia: "Computación Paralela",
+      hora: "15:00 - 16:40",
+      parcial1: { calificacion: 92, entregadas: 9, total: 10 },
+      parcial2: { calificacion: 94, entregadas: 10, total: 10 },
+      parcial3: { calificacion: 95, entregadas: 10, total: 10 },
+      asistencia: { asistidas: 29, totalClases: 30, porcentaje: 97 }
+    }
+    ],
+    pagos: [
+      { concepto: "Aporte de semestre", estatus: "Pagado", fecha: "10/03/2026" },
+      { concepto: "Intersemestrales", estatus: "Pendiente", fecha: "18/03/2026" }
+    ]
+  },
+
+  "50003": {
+    horarios: [
+      {
+      dia: "Lunes",
+      materia: "Matemáticas Aplicadas",
+      hora: "17:00 - 19:00",
+      parcial1: { calificacion: 60, entregadas: 6, total: 10 },
+      parcial2: { calificacion: 72, entregadas: 7, total: 10 },
+      parcial3: { calificacion: 78, entregadas: 8, total: 10 },
+      asistencia: { asistidas: 24, totalClases: 30, porcentaje: 80 }
+    },
+    {
+      dia: "Miércoles",
+      materia: "Arquitectura de Computadoras",
+      hora: "17:00 - 19:00",
+      parcial1: { calificacion: 83, entregadas: 8, total: 10 },
+      parcial2: { calificacion: 85, entregadas: 8, total: 10 },
+      parcial3: { calificacion: 88, entregadas: 9, total: 10 },
+      asistencia: { asistidas: 26, totalClases: 30, porcentaje: 87 }
+    },
+    {
+      dia: "Viernes",
+      materia: "Programación Orientada a Objetos",
+      hora: "19:00 - 21:00",
+      parcial1: { calificacion: 90, entregadas: 9, total: 10 },
+      parcial2: { calificacion: 89, entregadas: 9, total: 10 },
+      parcial3: { calificacion: 91, entregadas: 9, total: 10 },
+      asistencia: { asistidas: 28, totalClases: 30, porcentaje: 93 }
+    }
+    ],
+    pagos: [
+      { concepto: "Aportación de semestre", estatus: "Pendiente", fecha: "10/03/2026" },
+      { concepto: "Credencial", estatus: "Pagado", fecha: "05/03/2026" }
+    ]
+  }
+};
+
+let datosAcademicos = JSON.parse(localStorage.getItem("datosAcademicos")) || datosAcademicosBase;
+
+    function cerrarSesion() {
+  const confirmar = confirm("¿Deseas cerrar sesión?");
+  if (confirmar) {
+    localStorage.removeItem("usuario");
+    window.location.href = "index.html";
+  }
+}
+function verHorarios() {
+  const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  const datos = datosAcademicosBase[usuarioGuardado.matricula];
+
+  const dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+
+  let html = `
+    <h3 class="mb-4">Horario semanal del estudiante</h3>
+
+    <div class="calendario-horario">
+  `;
+
+  dias.forEach(dia => {
+    const materiasDia = datos.horarios.filter(item => item.dia === dia);
+
+    html += `
+      <div class="dia-calendario">
+        <h5>${dia}</h5>
+    `;
+
+    if (materiasDia.length === 0) {
+      html += `<p class="sin-clase">Sin clases</p>`;
+    } else {
+      materiasDia.forEach(materia => {
+        html += `
+          <div class="materia-card" onclick="verDetalleMateria('${materia.materia}')">
+            <strong>${materia.materia}</strong>
+            <span>${materia.hora}</span>
+          </div>
+        `;
+      });
+    }
+
+    html += `</div>`;
+  });
+
+  html += `
+    </div>
+
+    <button class="btn btn-secondary mt-4" onclick="location.reload()">
+      Volver al panel
+    </button>
+  `;
+
+  document.getElementById("contenido").innerHTML = html;
+}
+   
+function verDetalleMateria(nombreMateria) {
+  const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  const matricula = usuarioGuardado.matricula;
+  const materias = datosAcademicos[matricula].horarios;
+
+  const materia = materias.find(m => m.materia === nombreMateria);
+
+  const promedio = (
+    (materia.parcial1.calificacion +
+     materia.parcial2.calificacion +
+     materia.parcial3.calificacion) / 3
+  ).toFixed(1);
+
+  document.getElementById("contenido").innerHTML = `
+    <h3 class="mb-4">Detalle de la Materia</h3>
+
+    <div class="card shadow p-4">
+      <h4 class="text-primary mb-3">${materia.materia}</h4>
+
+      <table class="table table-bordered">
+        <thead class="table-primary">
+          <tr>
+            <th>Concepto</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <button class="btn btn-link text-decoration-none fw-semibold" onclick="verDetalleParcial('${nombreMateria}', 'parcial1')">
+                Parcial 1
+              </button>
+            </td>
+            <td>${materia.parcial1.calificacion}</td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn btn-link text-decoration-none fw-semibold" onclick="verDetalleParcial('${nombreMateria}', 'parcial2')">
+                Parcial 2
+              </button>
+            </td>
+            <td>${materia.parcial2.calificacion}</td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn btn-link text-decoration-none fw-semibold" onclick="verDetalleParcial('${nombreMateria}', 'parcial3')">
+                Parcial 3
+              </button>
+            </td>
+            <td>${materia.parcial3.calificacion}</td>
+          </tr>
+          <tr>
+            <td><strong>Promedio</strong></td>
+            <td><strong>${promedio}</strong></td>
+          </tr>
+          <tr>
+            <td>
+              <button class="btn btn-link text-decoration-none fw-semibold" onclick="verDetalleAsistencia('${nombreMateria}')">
+                Asistencia
+              </button>
+            </td>
+            <td>${materia.asistencia.porcentaje}%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mt-3">
+        <button class="btn btn-primary" onclick="verHorarios()">Volver a horarios</button>
+        <button class="btn btn-secondary ms-2" onclick="location.reload()">Volver al panel</button>
+      </div>
+    </div>
+  `;
+}
+function verDetalleParcial(nombreMateria, parcial) {
+  const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  const matricula = usuarioGuardado.matricula;
+  const materias = datosAcademicos[matricula].horarios;
+
+  const materia = materias.find(m => m.materia === nombreMateria);
+  const datosParcial = materia[parcial];
+
+  let nombreParcial = "";
+  if (parcial === "parcial1") nombreParcial = "Parcial 1";
+  if (parcial === "parcial2") nombreParcial = "Parcial 2";
+  if (parcial === "parcial3") nombreParcial = "Parcial 3";
+
+  document.getElementById("contenido").innerHTML = `
+    <h3 class="mb-4">Detalle del ${nombreParcial}</h3>
+
+    <div class="card shadow p-4">
+      <h4 class="text-primary mb-3">${materia.materia}</h4>
+
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>${nombreParcial}</th>
+            <td>${datosParcial.calificacion}</td>
+          </tr>
+          <tr>
+            <th>Actividades entregadas</th>
+            <td>${datosParcial.entregadas} de ${datosParcial.total}</td>
+          </tr>
+          <tr>
+            <th>Interpretación</th>
+            <td>El estudiante entregó ${datosParcial.entregadas} actividades de un total de ${datosParcial.total}, obteniendo una calificación de ${datosParcial.calificacion}.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mt-3">
+        <button class="btn btn-primary" onclick="verDetalleMateria('${nombreMateria}')">Volver a la materia</button>
+        <button class="btn btn-secondary ms-2" onclick="verHorarios()">Volver a horarios</button>
+        <button class="btn btn-success ms-2" onclick="location.reload()">Volver al Panel</button>
+      </div>
+    </div>
+  `;
+}
+function verDetalleAsistencia(nombreMateria) {
+  const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  const matricula = usuarioGuardado.matricula;
+  const materias = datosAcademicos[matricula].horarios;
+
+  const materia = materias.find(m => m.materia === nombreMateria);
+  const asistencia = materia.asistencia;
+
+  document.getElementById("contenido").innerHTML = `
+    <h3 class="mb-4">Detalle de Asistencia</h3>
+
+    <div class="card shadow p-4">
+      <h4 class="text-primary mb-3">${materia.materia}</h4>
+
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>Clases asistidas</th>
+            <td>${asistencia.asistidas}</td>
+          </tr>
+          <tr>
+            <th>Total de clases</th>
+            <td>${asistencia.totalClases}</td>
+          </tr>
+          <tr>
+            <th>Porcentaje de asistencia</th>
+            <td>${asistencia.porcentaje}%</td>
+          </tr>
+          <tr>
+            <th>Interpretación</th>
+            <td>El estudiante asistió a ${asistencia.asistidas} de ${asistencia.totalClases} clases, alcanzando un porcentaje de asistencia del ${asistencia.porcentaje}%.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mt-3">
+        <button class="btn btn-primary" onclick="verDetalleMateria('${nombreMateria}')">Volver a la materia</button>
+        <button class="btn btn-secondary ms-2" onclick="verHorarios()">Volver a horarios</button>
+        <button class="btn btn-success ms-2" onclick="location.reload()">Volver al Panel</button>
+      </div>
+    </div>
+  `;
+}
+   function verPagos() {
+  const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  const matricula = usuarioGuardado.matricula;
+  const pagos = datosAcademicos[matricula].pagos;
+
+  let filas = "";
+
+  pagos.forEach((pago, index) => {
+    let accion = "";
+
+    if (pago.estatus === "Pendiente") {
+      accion = `<button class="btn btn-sm btn-success" onclick="mostrarFormularioPago(${index})">Realizar pago</button>`;
+    } else {
+      accion = `<span class="text-success fw-bold">Pagado</span>`;
+    }
+
+    filas += `
+      <tr>
+        <td>${pago.concepto}</td>
+        <td>${pago.estatus}</td>
+        <td>${pago.fecha}</td>
+        <td>${accion}</td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("contenido").innerHTML = `
+    <h3 class="mb-4">Pagos del Estudiante</h3>
+
+    <div class="alert alert-warning">
+      Módulo de simulación de pago. No ingresar datos bancarios reales.
+    </div>
+
+    <table class="table table-bordered">
+      <thead class="table-primary">
+        <tr>
+          <th>Concepto</th>
+          <th>Estatus</th>
+          <th>Fecha límite</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${filas}
+      </tbody>
+    </table>
+
+    <div id="formularioPagoContainer" class="mt-4"></div>
+
+    <button class="btn btn-secondary mt-3" onclick="location.reload()">Volver al panel</button>
+  `;
+}
+function mostrarFormularioPago(indexPago) {
+  const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+  const matricula = usuarioGuardado.matricula;
+  const pago = datosAcademicos[matricula].pagos[indexPago];
+
+  document.getElementById("formularioPagoContainer").innerHTML = `
+    <div class="card shadow p-4">
+      <h4 class="mb-3 text-primary">Simulación de pago</h4>
+      <p><strong>Concepto:</strong> ${pago.concepto}</p>
+
+      <form id="formPagoSimulado">
+        <div class="mb-3">
+          <label class="form-label">Nombre del titular</label>
+          <input type="text" class="form-control" id="titular" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Banco</label>
+          <select class="form-select" id="banco" required>
+            <option value="">Selecciona un banco</option>
+            <option>BBVA</option>
+            <option>Santander</option>
+            <option>Banorte</option>
+            <option>HSBC</option>
+            <option>Citibanamex</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Número de tarjeta</label>
+          <input type="text" class="form-control" id="tarjeta" maxlength="16" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Fecha de vencimiento</label>
+            <input type="text" class="form-control" id="vencimiento" placeholder="MM/AA" required>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">CVV</label>
+            <input type="password" class="form-control" id="cvv" maxlength="3" required>
+          </div>
+        </div>
+
+        <div id="mensajePago" class="fw-bold mb-3"></div>
+
+        <button type="submit" class="btn btn-success">Confirmar pago</button>
+      </form>
+    </div>
+  `;
+
+  document.getElementById("formPagoSimulado").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const titular = document.getElementById("titular").value.trim();
+    const banco = document.getElementById("banco").value.trim();
+    const tarjeta = document.getElementById("tarjeta").value.trim();
+    const vencimiento = document.getElementById("vencimiento").value.trim();
+    const cvv = document.getElementById("cvv").value.trim();
+    const mensajePago = document.getElementById("mensajePago");
+
+    if (!titular || !banco || !tarjeta || !vencimiento || !cvv) {
+      mensajePago.textContent = "Completa todos los campos.";
+      mensajePago.className = "text-danger fw-bold mb-3";
+      return;
+    }
+
+    datosAcademicos[matricula].pagos[indexPago].estatus = "Pagado";
+
+    localStorage.setItem("datosAcademicos", JSON.stringify(datosAcademicos));
+
+    mensajePago.textContent = "Pago procesado correctamente (simulación).";
+    mensajePago.className = "text-success fw-bold mb-3";
+
+    setTimeout(() => {
+      verPagos();
+    }, 1200);
+  });
+}
+  function verAvisos() {
+  document.getElementById("contenido").innerHTML = `
+    <h3 class="mb-4">Avisos Institucionales</h3>
+
+    <div class="card mb-3 shadow">
+      <div class="card-body">
+        <h5>Documentos de titulación</h5>
+        <p>¡ATENCIÓN! estudiantes de 8vo semestre, recuerden seguir la guía de trámites de titulación</p>
+        <small class="text-muted">Publicado: 01/04/2026</small>
+      </div>
+    </div>
+
+    <div class="card mb-3 shadow">
+      <div class="card-body">
+        <h5>Servicio Social</h5>
+        <p>Estudiantes de 6to. semestre, pronto se abrirán los trámites para el servicio social
+           más información en: 
+           <a href="https://www.ceti.mx/publicacion/45"
+           target="_blank"
+           class="btn btn-primary btn-sm"> Portal CETI 
+           </a> 
+          </p>
+        <small class="text-muted">Publicado: 18/02/2026</small>
+      </div>
+    </div>
+
+    <div class="card mb-3 shadow">
+      <div class="card-body">
+        <h5>Mantenimiento del sistema</h5>
+        <p>La plataforma estará en mantenimiento el domingo de 10:00 a 14:00 hrs.</p>
+        <small class="text-muted">Publicado: 05/02/2026</small>
+      </div>
+    </div>
+
+    <button class="btn btn-secondary mt-3" onclick="location.reload()">Volver al panel</button> 
+  `;
+}
+function verFAQ() {
+  document.getElementById("contenido").innerHTML = `
+    <h3 class="mb-4">Preguntas Frecuentes</h3>
+
+    <div class="accordion" id="faqAccordion">
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            ¿Dónde puedo consultar mi horario?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            En el módulo de Horarios dentro de la plataforma CETI Virtual.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            ¿Cúanto tiempo tarda en reflejarse mis pagos?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            El pago se verá reflejado de 1 a 2 días hábiles.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+            ¿Qué hago si tengo una duda administrativa?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Puedes enviar tu consulta en el módulo de Contacto para recibir seguimiento o mandar
+            un correo a tu coordinadora de carrera.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+            ¿Dónde puedo visualizar el calendario escolar?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            El calendario escolar lo puedes encontrar en el siguiente enlace:
+            <a href="https://www.ceti.mx/calendarios"
+            target="_blank"
+            class="btn btn-primary btn-sm"> Calendario CETI
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn btn-secondary mt-3" onclick="location.reload()">Volver al panel</button>
+  `;
+}
+  function verContacto() {
+  document.getElementById("contenido").innerHTML = `
+    <h3 class="mb-4">Contacto / Enviar consulta</h3>
+
+    <div class="card shadow p-4">
+      <form id="formContacto">
+        <div class="mb-3">
+          <label class="form-label">Asunto</label>
+          <input type="text" class="form-control" id="asunto" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Mensaje</label>
+          <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+        </div>
+
+        <div id="mensajeConfirmacion" class="text-success fw-bold mb-3"></div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="button" class="btn btn-secondary ms-2" onclick="location.reload()">Volver al panel</button>
+      </form>
+    </div>
+  `;
+
+   const formulario = document.getElementById("formContacto");
+
+   formulario.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const asunto = document.getElementById("asunto").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    // Obtener usuario activo
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+    // Validación
+    if (asunto === "" || mensaje === "") {
+
+        document.getElementById("mensajeConfirmacion").textContent =
+            "Completa todos los campos.";
+
+        document.getElementById("mensajeConfirmacion").className =
+            "text-danger fw-bold mb-3";
+
+        return;
+    }
+
+    // Obtener consultas guardadas
+    let consultas = JSON.parse(localStorage.getItem("consultas")) || [];
+
+    // Nueva consulta
+    const nuevaConsulta = {
+        matricula: usuario.matricula,
+        nombre: usuario.nombre,
+        asunto: asunto,
+        mensaje: mensaje,
+        fecha: new Date().toLocaleString()
+    };
+
+    // Agregar nueva consulta
+    consultas.push(nuevaConsulta);
+
+    // Guardar consultas
+    localStorage.setItem("consultas", JSON.stringify(consultas));
+
+    console.log("Consulta guardada:", nuevaConsulta);
+    console.log("Todas las consultas:", consultas);
+
+    // Mensaje éxito
+    document.getElementById("mensajeConfirmacion").textContent =
+        "Consulta enviada correctamente.";
+
+    document.getElementById("mensajeConfirmacion").className =
+        "text-success fw-bold mb-3";
+
+    // Limpiar formulario
+    formulario.reset();
+  });
+}
+const usuarioGuardado = JSON.parse(localStorage.getItem("usuario"));
+const nombreAlumno =
+document.getElementById("nombreAlumno");
+
+if(nombreAlumno){
+   const saludoLateral = document.getElementById("saludoLateral");
+   const nombreAlumno = document.getElementById("nombreAlumno");
+
+if (saludoLateral && usuarioGuardado) {
+  saludoLateral.textContent =
+    usuarioGuardado.genero === "F" ? "¡Bienvenida!" : "¡Bienvenido!";
+}
+
+if (nombreAlumno && usuarioGuardado) {
+  nombreAlumno.textContent = usuarioGuardado.nombre;
+}
+}
+
+const usuarioBarra = document.getElementById("usuarioActivo");
+const usuarioPanel = document.getElementById("usuarioPanel");
+const mensajeBienvenida = document.getElementById("mensajeBienvenida");
+
+if (usuarioGuardado) {
+
+  // Mostrar matrícula en barra
+  if (usuarioBarra) {
+    let tipoAlumno = "";
+
+if (usuarioGuardado.genero === "F") {
+  tipoAlumno = "Alumna";
+} else {
+  tipoAlumno = "Alumno";
+}
+
+usuarioBarra.textContent =
+  tipoAlumno + ": " +
+  usuarioGuardado.nombre.toUpperCase() +
+  " | " +
+  usuarioGuardado.semestre +
+  " semestre";
+  }
+
+  // Mostrar sesión activa con semestre
+  if (usuarioPanel) {
+    usuarioPanel.textContent = usuarioGuardado.matricula + " - " + usuarioGuardado.semestre + " semestre";
+  }
+
+  // Bienvenida personalizada por género
+  if (mensajeBienvenida) {
+    let saludo = "";
+
+    if (usuarioGuardado.genero === "F") {
+      saludo = "Bienvenida";
+    } else {
+      saludo = "Bienvenido";
+    }
+
+    mensajeBienvenida.textContent = saludo + " a tu plataforma académica " + usuarioGuardado.nombre;
+  }
+
+}
+  const frases = [
+
+   "La lógica te llevará de A a B, pero la imaginación te llevará a donde sea",
+
+   "Nunca dejes de aprender",
+
+   "El éxito comienza con disciplina",
+
+   "Tus metas están más cerca cada día",
+
+   "El conocimiento abre oportunidades",
+
+   "Siempre parece imposible hasta que se hace",
+
+   "El genio se hace con un 1% de talento y 99% de trabajo"
+
+];
+
+let indiceFrase = 0;
+
+setInterval(() => {
+
+   indiceFrase++;
+
+   if(indiceFrase >= frases.length){
+      indiceFrase = 0;
+   }
+
+   const frase =
+   document.getElementById("fraseMotivacional");
+
+   if(frase){
+      frase.textContent = frases[indiceFrase];
+   }
+
+}, 3000);
+
+const slider =
+document.querySelector(".slider");
+
+const flechaIzq =
+document.querySelector(".flecha-izq");
+
+const flechaDer =
+document.querySelector(".flecha-der");
+
+let posicion = 0;
+
+const totalModulos =
+document.querySelectorAll(".modulo-grande").length;
+
+const anchoModulo = 630;
+
+function moverSlider(){
+
+   slider.style.transform =
+   `translateX(-${posicion * anchoModulo}px)`;
+
+}
+
+flechaDer.addEventListener("click", () => {
+
+   posicion++;
+
+   if(posicion >= totalModulos){
+
+      posicion = 0;
+
+   }
+
+   moverSlider();
+
+});
+
+flechaIzq.addEventListener("click", () => {
+
+   posicion--;
+
+   if(posicion < 0){
+
+      posicion = totalModulos - 1;
+
+   }
+
+   moverSlider();
+
+});
+
+flechaIzq.addEventListener("click", () => {
+
+   if(posicion > 0){
+
+      posicion--;
+
+      slider.style.transform =
+      `translateX(-${posicion * anchoModulo}px)`;
+
+   }
+
+});
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<footer class="footer-ceti mt-5">
+
+  <div class="container py-4">
+<img src="img/CETI_Logo.png" 
+alt="Logo CETI"
+width="120"
+height="80"
+class="me-3 rounded">
+
+    <div class="row">
+
+      <!-- Información -->
+      <div class="col-md-4 mb-3">
+        <h5 class="fw-bold">CETI Virtual</h5>
+
+        <p class="mb-1">
+          Centro de Enseñanza Técnica Industrial
+        </p>
+
+        <p class="mb-1">
+          Plataforma académica institucional.
+        </p>
+
+        <p class="mb-0">
+          Guadalajara, Jalisco, México.
+        </p>
+      </div>
+
+      <!-- Enlaces -->
+      <div class="col-md-4 mb-3">
+        <h5 class="fw-bold">Enlaces rápidos</h5>
+
+        <ul class="list-unstyled">
+
+          <li>
+            <a href="#" onclick="verHorarios()">
+              Horarios
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="verPagos()">
+              Pagos
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="verAvisos()">
+              Avisos
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="verFAQ()">
+              FAQ
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="verContacto()">
+              Contacto
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Soporte -->
+      <div class="col-md-4 mb-3">
+        <h5 class="fw-bold">Apoyo Académico</h5>
+
+        <p class="mb-1">
+          apoyo.academico.col@ceti.mx
+        </p>
+
+        
+      </div>
+
+    </div>
+
+    <hr class="border-light">
+
+    <div class="text-center small">
+      © 2026 CETI Virtual | Plataforma académica desarrollada como prototipo educativo.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>

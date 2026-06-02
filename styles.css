@@ -1,0 +1,471 @@
+.login-body{
+
+   background:
+   linear-gradient(rgba(0,0,0,0.45),
+   rgba(0,0,0,0.45)),
+
+   url("img/edificio\ F.jpg");
+
+   background-size:cover;
+
+   background-position:center;
+
+   min-height:100vh;
+
+}
+
+.login-card{
+  max-width: 420px;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255, 255, 255, 0.884);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+.login-logo{
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.login-card h2{
+  font-weight: bold;
+  color: #1e3a8a;
+}
+
+.login-card .form-control{
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.login-card .btn{
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.navbar{
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.navbar-brand{
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+#usuarioActivo{
+  font-size: 1.2rem;
+  font-weight: bold ;
+}
+
+#contenido h3{
+  font-weight: bold;
+  color: #1f2d3d;
+}
+
+.card{
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+}
+
+.card-body h5{
+  font-weight: bold;
+  color: #1f2d3d;
+}
+
+.card-body p{
+  color: #5c6b7a;
+  min-height: 48px;
+}
+
+.btn{
+  border-radius: 10px;
+  padding: 8px 16px;
+}
+
+.table{
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table thead th{
+  text-align: center;
+}
+
+.accordion-item{
+  border-radius: 12px !important;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.accordion-button{
+  font-weight: 600;
+}
+
+.accordion-button:not(.collapsed){
+  background-color: #eaf2ff;
+  color: #0d6efd;
+}
+
+.form-control, .form-select, textarea{
+  border-radius: 10px;
+}
+
+.card.shadow.p-4{
+  border-radius: 18px;
+}
+
+.card-horarios{
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+}
+
+.card-pagos{
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+}
+
+.card-avisos{
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+}
+
+.card-faq{
+  background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+}
+
+.card-contacto{
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+}
+
+.card-horarios .btn{ background-color:#2563eb; border:none; }
+.card-pagos .btn{ background-color:#16a34a; border:none; }
+.card-avisos .btn{ background-color:#d97706; border:none; color:white; }
+.card-faq .btn{ background-color:#7c3aed; border:none; }
+.card-contacto .btn{ background-color:#dc2626; border:none; }
+
+
+
+.navbar{
+   background: linear-gradient(90deg, #002147, #00509d);
+}
+
+.titulo-bienvenida{
+   font-size: 2.1rem;
+   font-weight: 700;
+   color: #0b1f4d;
+   letter-spacing: 1px;
+}
+
+.footer-ceti{
+   background: linear-gradient(90deg, #0b1f4d, #003366);
+   color: white;
+   margin-top: 40px;
+}
+
+.footer-ceti h5{
+   font-weight: bold;
+   margin-bottom: 15px;
+}
+
+.footer-ceti p,
+.footer-ceti li{
+   color: #dbe4ff;
+   font-size: 0.95rem;
+}
+
+.footer-ceti ul{
+   padding-left: 0;
+}
+
+.footer-ceti li{
+   margin-bottom: 6px;
+}
+
+.footer-ceti hr{
+   opacity: 0.3;
+}
+
+.footer-ceti a{
+   color:#dbe4ff;
+   text-decoration:none;
+}
+
+.footer-ceti a:hover{
+   color:white;
+   text-decoration:underline;
+}
+
+.panel-principal{
+
+   display:flex;
+
+   align-items:center;
+
+   justify-content:center;
+
+   gap:20px;
+
+   width:100%;
+
+   flex-wrap:nowrap;
+}
+
+.panel-lateral{
+   width:260px;
+   min-height:500px;
+   background:linear-gradient(180deg,#7ea8d8,#0b2e6b);
+   border-radius:25px;
+   color:white;
+   padding:30px;
+   display:flex;
+   flex-direction:column;
+   flex-shrink: 0;
+   justify-content:center;
+   align-items:center;
+   align-self: center;
+   text-align:center;
+   box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.panel-centro{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+}
+
+.modulo-grande{
+   min-width:600px;
+
+   height:420px;
+
+   border-radius:35px;
+
+   overflow:hidden;
+
+   position:relative;
+
+   box-shadow:0 10px 30px rgba(0,0,0,0.25);
+
+   background:white;
+}
+
+.img-modulo{
+   width:100%;
+   height:100%;
+   object-fit:cover;
+}
+
+.contenido-modulo{
+   position:absolute;
+   top:50px;
+   left:50px;
+   color:yellow;
+   font-weight: bold;
+}
+
+.contenido-modulo h2{
+   font-size:3.5rem;
+   font-weight:bold;
+}
+
+.contenido-modulo p{
+   font-size:2rem;
+   font-weight:600;
+}
+
+.btn-modulo{
+   margin-top:40px;
+   background:#001f66;
+   color:white;
+   border:none;
+   width:320px;
+   font-size:1.5rem;
+   border-radius:15px;
+   padding:12px;
+}
+
+.btn-modulo:hover{
+   background:#003399;
+   color:white;
+}
+
+.logo-lateral{
+   width:100px;
+   margin-bottom:20px;
+}
+
+.frase-lateral{
+   margin-top:20px;
+   font-size:1.3rem;
+   line-height:1.8;
+}
+
+.bienvenida-lateral{
+   font-size:1.3rem;
+   font-weight:bold;
+   line-height:1.5;
+}
+
+.panel-fondo{
+  position: relative;
+
+  min-height: 100vh;
+
+  width: 100%;
+
+  background:
+    linear-gradient(rgba(255,255,255,0.85),
+    rgba(255,255,255,0.85)),
+
+    url("img/calendario-azteca.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 40px;
+
+  overflow: hidden;
+}
+.contenedor-modulos{
+   width:600px;
+   overflow:hidden;
+}
+
+.flecha{
+   width:60px;
+   height:60px;
+   border:none;
+   border-radius:50%;
+   background:#0b2e6b;
+   color:white;
+   font-size:2rem;
+   cursor:pointer;
+   transition:0.3s;
+}
+
+.flecha:hover{
+   background:#003399;
+}
+
+.slider{
+   display:flex;
+   gap:30px;
+   transition: transform 0.8s ease-in-out;
+}
+
+@keyframes fadeIn{
+
+   from{
+      opacity:0;
+      transform:translateY(-20px);
+   }
+
+   to{
+      opacity:1;
+      transform:translateY(0);
+   }
+}
+
+.btn-login{
+
+   background:#0b2e6b;
+
+   border:none;
+
+   border-radius:12px;
+
+   padding:12px;
+
+   font-size:1.1rem;
+
+   font-weight:bold;
+
+   transition:0.3s;
+}
+
+.btn-login:hover{
+
+   transform:scale(1.03);
+
+   background:#003399;
+}
+
+.login-container{
+
+   min-height:100vh;
+
+   display:flex;
+
+   justify-content:center;
+
+   align-items:center;
+}
+
+.calendario-horario{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.dia-calendario{
+  background: rgba(255,255,255,0.92);
+  border-radius: 18px;
+  padding: 15px;
+  min-height: 330px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.dia-calendario h5{
+  text-align: center;
+  font-weight: bold;
+  color: #0b1f4d;
+  border-bottom: 2px solid #0d6efd;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.materia-card{
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  border-left: 5px solid #0d6efd;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.materia-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.materia-card strong{
+  display: block;
+  color: #0b1f4d;
+  font-size: 0.95rem;
+}
+
+.materia-card span{
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #34495e;
+}
+
+.sin-clase{
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 30px;
+}
