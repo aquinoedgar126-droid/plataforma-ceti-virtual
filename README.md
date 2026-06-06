@@ -12,7 +12,7 @@ El sistema consiste en una plataforma web integrada orientada a estudiantes de m
 
 ## Asesor
 
-**Mtro. Omar Alejandro Chávez Campos**
+**Dr. Omar Alejandro Chávez Campos**
 
 ## Tecnologías utilizadas
 
@@ -28,11 +28,11 @@ El sistema consiste en una plataforma web integrada orientada a estudiantes de m
 
 ### Manual Técnico
 
-[Descargar Manual Técnico](docs/Manual_Tecnico_CETI_Virtual.pdf)
+[Descargar Manual_Técnico_CETI Virtual](https://github.com/aquinoedgar126-droid/plataforma-ceti-virtual/blob/main/MANUAL%20T%C3%89CNICO%202.0.pdf)
 
 ### Manual de Usuario
 
-[Descargar Manual de Usuario](docs/Manual_Usuario_CETI_Virtual.pdf)
+[Descargar Manual_Usuario_CETI Virtual](https://github.com/aquinoedgar126-droid/plataforma-ceti-virtual/blob/main/MANUAL%20DE%20USUARIO%202.0.pdf)
 
 ## Plataforma Web
 
